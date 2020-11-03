@@ -3,16 +3,18 @@ package main
 import (
 	"fmt"
 
-	"algos.com/main/matrices"
+	"algos.com/main/linkedlist"
 )
 
 func main() {
-	d, err := matrices.CreateLowerTriangular([]int{2, 3, 5, 6, 8, 10, 4, 12, 11, 13}, -1)
-	if err != nil {
-		panic(err)
-	}
+	ll := linkedlist.CreateLinkedList()
+	ll.Push(10)
+	ll.Push(20)
+	ll.Push(30)
+	ll.Push(50)
+	ll.Push(60)
+	ll.Push(70)
+	ll.Push(90)
 
-	d.Set(2, 4, 49)
-
-	fmt.Println(d)
+	fmt.Println(ll.String())
 }

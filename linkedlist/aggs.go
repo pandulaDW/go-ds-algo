@@ -3,22 +3,22 @@ package linkedlist
 import "math"
 
 // Count returns the count of the linked list struct
-func (linkedList *LinkedList) Count() int {
-	return (*linkedList).count
+func (list *LinkedList) Count() int {
+	return (*list).count
 }
 
 // Sum returns the sum of the linked list
 //
 // Returns 0 if only head element is there
-func (linkedList *LinkedList) Sum() int {
+func (list *LinkedList) Sum() int {
 
 	// only head case
-	if linkedList.head.next == nil {
+	if list.head.next == nil {
 		return 0
 	}
 
 	// iterate the list
-	nextNode := (*linkedList).head.next
+	nextNode := (*list).head.next
 	sum := 0
 	for true {
 		sum += (*nextNode).data
@@ -33,15 +33,15 @@ func (linkedList *LinkedList) Sum() int {
 // Max returns the max of the linked list
 //
 // Returns 0 if only head element is there
-func (linkedList *LinkedList) Max() int {
+func (list *LinkedList) Max() int {
 
 	// only head case
-	if linkedList.head.next == nil {
+	if list.head.next == nil {
 		return 0
 	}
 
 	// iterate the list
-	nextNode := (*linkedList).head.next
+	nextNode := (*list).head.next
 	max := math.MinInt32
 	for true {
 		if max < (*nextNode).data {
@@ -58,15 +58,15 @@ func (linkedList *LinkedList) Max() int {
 // Min returns the min of the linked list
 //
 // Returns 0 if only head element is there
-func (linkedList *LinkedList) Min() int {
+func (list *LinkedList) Min() int {
 
 	// only head case
-	if linkedList.head.next == nil {
+	if list.head.next == nil {
 		return 0
 	}
 
 	// iterate the list
-	nextNode := (*linkedList).head.next
+	nextNode := (*list).head.next
 	min := math.MaxInt32
 	for true {
 		if min > (*nextNode).data {

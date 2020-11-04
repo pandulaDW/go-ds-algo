@@ -6,20 +6,20 @@ package linkedlist
 //
 // Tail will be assigned to the new node and the current tail's next will be assigned
 // to the new node.
-func (linkedList *LinkedList) Push(data int) {
+func (list *LinkedList) Push(data int) {
 	newNode := Node{data: data, next: nil}
 
 	// initial head case
-	if (*linkedList).head.next == nil {
-		(*linkedList).head.next = &newNode
-		(*linkedList).tail = &newNode
-		(*linkedList).count++
+	if (*list).head.next == nil {
+		(*list).head.next = &newNode
+		(*list).tail = &newNode
+		(*list).count++
 		return
 	}
 
-	// Set the next pointer of the tail to the new node and set tail to the new node
-	currentTailNode := (*linkedList).tail
+	// Set the next pointer of the current tail to the new node and set tail to the new node
+	currentTailNode := (*list).tail
 	(*currentTailNode).next = &newNode
-	(*linkedList).tail = &newNode
-	(*linkedList).count++
+	(*list).tail = &newNode
+	(*list).count++
 }

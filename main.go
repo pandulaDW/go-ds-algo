@@ -16,9 +16,9 @@ func main() {
 	ll.Push(110)
 	ll.Push(90)
 
-	fmt.Println("Count: ", ll.Count())
-	fmt.Println("Sum: ", ll.Sum())
-	fmt.Println("Max: ", ll.Max())
-	fmt.Println("Min: ", ll.Min())
 	fmt.Println(ll.String())
+
+	data, _ := ll.FindByIndex(5)
+	fmt.Println(data)
+	fmt.Println(ll.FindByData(90))
 }

@@ -6,22 +6,21 @@ import (
 )
 
 // Returns a string representation of the linked list
-func (linkedList *LinkedList) String() string {
+func (list *LinkedList) String() string {
 
 	// only head case
-	if (*linkedList).head.next == nil {
+	if (*list).head.next == nil {
 		return "{}"
 	}
 
 	// builder to build the linked list
 	var sb strings.Builder
 
-	nextNode := (*linkedList).head
+	nextNode := (*list).head
 	for true {
 		nextNode = nextNode.next
 		sb.WriteString(strconv.FormatInt(int64(nextNode.data), 10))
 		if nextNode.next == nil {
-			sb.WriteByte('\n')
 			break
 		} else {
 			sb.WriteString(" -> ")

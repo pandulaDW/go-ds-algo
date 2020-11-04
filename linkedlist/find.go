@@ -1,6 +1,8 @@
 package linkedlist
 
-import "errors"
+import (
+	"errors"
+)
 
 // FindByIndex returns the data of a node at the given index
 // position of the linked list
@@ -9,7 +11,7 @@ import "errors"
 func (list *LinkedList) FindByIndex(index int) (int, error) {
 
 	if list.count < index+1 {
-		return -1, errors.New("Index cannot be larger than array size")
+		return -1, errors.New("Index out of bound")
 	}
 
 	nextNode := (*list).head.next
@@ -45,6 +47,44 @@ func (list *LinkedList) FindByData(data int) int {
 			return index
 		}
 		index++
+		nextNode = (*nextNode).next
+	}
+
+	return -1
+}
+
+// FindByDataRepeated returns the index of the first node found if the passed data
+// matches the node data property.
+//
+// The difference with FindByData is that, this procedure will move the matching node to the
+// beginning of the list, thereby improving searching speed on repeated searches
+//
+// returns -1 if a matching node is not found
+func (list *LinkedList) FindByDataRepeated(data int) int {
+	if (*list).head.next == nil {
+		return -1
+	}
+
+	nextNode := (*list).head.next
+	previousNode := (*list).head
+	index := 0
+
+	for index < list.count {
+		if data == (*nextNode).data {
+			(*previousNode).next = (*nextNode).next
+			(*nextNode).next = (*list).head.next
+			newHead := Node{0, nextNode}
+			(*list).head = &newHead
+
+			// if the last element is matched, tail should be updated
+			if index == list.count-1 {
+				(*list).tail = previousNode
+			}
+
+			return index
+		}
+		index++
+		previousNode = nextNode
 		nextNode = (*nextNode).next
 	}
 

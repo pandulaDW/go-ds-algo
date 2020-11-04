@@ -4,7 +4,7 @@ package linkedlist
 //
 // Creates a new linked list struct and assigns data.
 //
-// Tail will be assigned to the new node and the current tail's next will be assigned
+// Tail will be assigned to the new node and also the current tail's next will be assigned
 // to the new node.
 func (list *LinkedList) Push(data int) {
 	newNode := Node{data: data, next: nil}

@@ -13,6 +13,7 @@ func (linkedList *LinkedList) Push(data int) {
 	if (*linkedList).head.next == nil {
 		(*linkedList).head.next = &newNode
 		(*linkedList).tail = &newNode
+		(*linkedList).count++
 		return
 	}
 
@@ -20,4 +21,5 @@ func (linkedList *LinkedList) Push(data int) {
 	currentTailNode := (*linkedList).tail
 	(*currentTailNode).next = &newNode
 	(*linkedList).tail = &newNode
+	(*linkedList).count++
 }

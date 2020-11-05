@@ -13,13 +13,9 @@ func main() {
 	ll.Push(30)
 	ll.Push(40)
 	ll.Push(50)
-	ll.Push(110)
-	ll.Push(90)
+	ll.Push(60)
 
-	fmt.Println(ll.String())
-
-	fmt.Println(ll.FindByDataRepeated(90))
-	ll.Push(120)
+	ll.InsertAtIndex(0, 35)
 
 	fmt.Println(ll.String())
 }

@@ -15,7 +15,7 @@ func main() {
 	ll.Push(50)
 	ll.Push(60)
 
-	ll.InsertAtIndex(0, 35)
+	ll.PushToSorted(22)
 
 	fmt.Println(ll.String())
 }

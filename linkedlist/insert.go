@@ -89,3 +89,36 @@ func (list *LinkedList) InsertAtIndex(index, data int) error {
 
 	return nil
 }
+
+// PushToSorted pushes elements to the linked list while preserving the sort order
+//
+// The method assumes that the list is sorted in an ascending order and only unique elements
+// are allowed
+func (list *LinkedList) PushToSorted(data int) {
+
+	// if the list is empty
+	if list.count == 0 {
+		list.Push(data)
+	}
+
+	// find the closest index position for the new node
+	nextNode := list.head.next
+	correctIndex := 0
+
+	for correctIndex < (*list).count {
+		if (*nextNode).data == data {
+			return
+		}
+
+		if (*nextNode).data > data {
+			list.InsertAtIndex(correctIndex, data)
+			return
+		}
+
+		correctIndex++
+		nextNode = (*nextNode).next
+	}
+
+	// if the element is higher than current elements, push it to the end
+	list.Push(data)
+}

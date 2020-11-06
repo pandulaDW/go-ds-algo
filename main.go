@@ -15,7 +15,8 @@ func main() {
 	ll.Push(50)
 	ll.Push(60)
 
-	ll.PushToSorted(22)
+	ll.DeleteAtIndex(0)
 
 	fmt.Println(ll.String())
+	fmt.Println(ll.Count())
 }

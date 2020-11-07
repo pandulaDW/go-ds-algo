@@ -16,12 +16,8 @@ func main() {
 	ll.Push(60)
 	ll.Push(80)
 
-	ll2 := linkedlist.CreateLinkedList()
-	ll2.Push(5)
-	ll2.Push(32)
-	ll2.Push(64)
-	ll2.Push(82)
+	loopList := linkedlist.DummyLoop()
+	fmt.Println(loopList.IsLoop())
 
-	ll.Merge(&ll2)
 	fmt.Println(ll.String())
 }

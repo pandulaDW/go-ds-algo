@@ -31,7 +31,6 @@ func (list *LinkedList) Merge(list2 *LinkedList) {
 		if p != nil && p.data < q.data {
 			mergedList.Push(p.data)
 			p = p.next
-
 		} else {
 			mergedList.Push(q.data)
 			q = q.next

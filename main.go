@@ -12,10 +12,16 @@ func main() {
 	ll.Push(20)
 	ll.Push(30)
 	ll.Push(40)
-	ll.Push(50)
 	ll.Push(60)
+	ll.Push(60)
+	ll.Push(80)
 
-	fmt.Println(ll.String())
-	ll.ReverseList()
+	ll2 := linkedlist.CreateLinkedList()
+	ll2.Push(5)
+	ll2.Push(32)
+	ll2.Push(64)
+	ll2.Push(82)
+
+	ll.Merge(&ll2)
 	fmt.Println(ll.String())
 }

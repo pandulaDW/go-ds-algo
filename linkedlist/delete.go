@@ -90,10 +90,7 @@ func (list *LinkedList) DeleteDuplicates() error {
 	nextNode := list.head.next
 	previousNode := list.head
 
-	for true {
-		if nextNode == nil {
-			break
-		}
+	for nextNode != nil {
 		if _, ok := elemMap[nextNode.data]; !ok {
 			elemMap[nextNode.data] = 0
 			previousNode = previousNode.next

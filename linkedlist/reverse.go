@@ -1,6 +1,6 @@
 package linkedlist
 
-// ReverseList reverses a linked list in an O(2n) complexity
+// ReverseList reverses a linked list in an O(n) time and space complexity
 func (list *LinkedList) ReverseList() {
 
 	// handle empty list
@@ -19,16 +19,10 @@ func (list *LinkedList) ReverseList() {
 		nextNode = nextNode.next
 	}
 
-	// create a new list
-	head := &Node{0, nil}
-	tail := head
-	reversedList := LinkedList{head: head, tail: tail}
-
-	// push the reversed array elements to the new linked list
+	// iterate the array and replace the data values in the list
+	nextNode = list.head.next
 	for _, val := range reversedArr {
-		reversedList.Push(val)
+		nextNode.data = val
+		nextNode = nextNode.next
 	}
-
-	// assign the new linked list to the old list
-	*list = reversedList
 }

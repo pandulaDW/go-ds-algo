@@ -15,8 +15,7 @@ func main() {
 	ll.Push(50)
 	ll.Push(60)
 
-	ll.DeleteAtIndex(0)
-
 	fmt.Println(ll.String())
-	fmt.Println(ll.Count())
+	ll.ReverseList()
+	fmt.Println(ll.String())
 }

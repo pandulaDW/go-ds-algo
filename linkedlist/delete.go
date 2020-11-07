@@ -72,3 +72,39 @@ func (list *LinkedList) DeleteAtIndex(index int) error {
 
 	return nil
 }
+
+// DeleteDuplicates deletes duplicate entries from a linked list with O(n) complexity
+//
+// Returns an error if array is empty
+func (list *LinkedList) DeleteDuplicates() error {
+
+	if list.head.next == nil {
+		return errors.New("Array cannot be empty")
+	}
+
+	// create an element map
+	elemMap := map[int]int{}
+
+	// iterate the list and if duplicates are found remove them
+	index := 0
+	nextNode := list.head.next
+	previousNode := list.head
+
+	for true {
+		if nextNode == nil {
+			break
+		}
+		if _, ok := elemMap[nextNode.data]; !ok {
+			elemMap[nextNode.data] = 0
+			previousNode = previousNode.next
+		} else {
+			previousNode.next = nextNode.next
+			nextNode.next = nil
+			nextNode = previousNode
+		}
+		index++
+		nextNode = nextNode.next
+	}
+
+	return nil
+}

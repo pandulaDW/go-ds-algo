@@ -22,3 +22,8 @@ func CreateLinkedList() LinkedList {
 	list := LinkedList{head: head, tail: tail}
 	return list
 }
+
+// IsEmpty would return if the list is empty
+func (list *LinkedList) IsEmpty() bool {
+	return list.head.next == nil
+}

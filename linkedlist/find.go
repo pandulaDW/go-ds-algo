@@ -90,3 +90,19 @@ func (list *LinkedList) FindByDataRepeated(data int) int {
 
 	return -1
 }
+
+// FindLast will return the last element of the linked list, panics if list is empty
+func (list *LinkedList) FindLast() int {
+	if list.head.next == nil {
+		panic(errors.New("List is empty"))
+	}
+	return list.tail.data
+}
+
+// FindFirst will return the first element of the linked list, panics if list is empty
+func (list *LinkedList) FindFirst() int {
+	if list.head.next == nil {
+		panic(errors.New("List is empty"))
+	}
+	return list.head.next.data
+}

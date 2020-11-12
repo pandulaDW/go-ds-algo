@@ -3,21 +3,18 @@ package main
 import (
 	"fmt"
 
-	"algos.com/main/linkedlist"
+	"algos.com/main/stacks"
 )
 
 func main() {
-	ll := linkedlist.CreateLinkedList()
-	ll.Push(10)
-	ll.Push(20)
-	ll.Push(30)
-	ll.Push(40)
-	ll.Push(60)
-	ll.Push(60)
-	ll.Push(80)
+	stack := stacks.CreateStackUsingArray(10)
+	stack.Push(10)
+	stack.Push(20)
+	stack.Push(30)
+	stack.Push(40)
+	stack.Push(50)
 
-	loopList := linkedlist.DummyLoop()
-	fmt.Println(loopList.IsLoop())
+	stack.Pop()
 
-	fmt.Println(ll.String())
+	fmt.Println(stack.String())
 }

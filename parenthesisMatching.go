@@ -7,16 +7,15 @@ import "algos.com/main/stacks"
 //
 // This function matche (), [] and {} types of parenthesis expressions
 func IsParenthesisMatching(expr string) bool {
-
 	oMap := map[rune]rune{
 		'(': ')',
 		'[': ']',
 		'{': '}',
 	}
-	cMap := map[rune]rune{
-		')': '(',
-		']': '[',
-		'}': '{',
+	cMap := map[rune]rune{}
+	// reversing oMap and storing in cMap
+	for key := range oMap {
+		cMap[oMap[key]] = key
 	}
 
 	stack := stacks.CreateStackUsingArray(len(expr))

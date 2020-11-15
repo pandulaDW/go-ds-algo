@@ -212,11 +212,12 @@ func isAnagram(s1, s2 string) bool {
 
 // finds the number of duplicate letters
 func findDuplicateLetters(s string) []string {
-	intSlice := make([]int, 0, len(s))
+	runeSlice := []rune(s)
 
-	// create a rune slice from the underlying byte slice
-	for _, val := range s {
-		intSlice = append(intSlice, int(val))
+	// create a int slice from the rune slice
+	intSlice := make([]int, len(runeSlice))
+	for i, val := range runeSlice {
+		intSlice[i] = int(val)
 	}
 
 	// get the duplicates
@@ -225,7 +226,7 @@ func findDuplicateLetters(s string) []string {
 	// convert the int slice to string slice
 	duplicateLetters := make([]string, len(duplicateInts))
 	for i, val := range duplicateInts {
-		duplicateLetters[i] = string(val)
+		duplicateLetters[i] = string(rune(val))
 	}
 
 	return duplicateLetters

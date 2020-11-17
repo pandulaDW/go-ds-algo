@@ -74,9 +74,30 @@ func (store *MemStore) Read(b []byte) (n int, err error) {
 // Clear will clear out of the buffer from the store
 func (store *MemStore) Clear() {
 	// assign the buffer to a new array, so the previous one will be GCd
-	// and reset the offsets
 	store.buffer = make([]byte, store.bufferSize)
+	// reset the offsets
 	store.readOffset, store.writeOffset = 0, 0
+}
+
+// Flush all the remaning elements in the buffer to the passed slice and
+// return the number of elements copied. Will also clear and reset the buffer
+//
+// Panics if the passed slice is too small in length
+func (store *MemStore) Flush(b []byte) (n int) {
+	// if the buffer is fully read, just return
+	if store.readOffset == store.bufferSize {
+		return 0
+	}
+
+	// if the slice length is too small, panic
+	if len(b) < store.bufferSize-store.readOffset {
+		panic(errors.New("Slice length is too small"))
+	}
+
+	nCopied := copy(b, store.buffer[store.readOffset:])
+	store.Clear()
+
+	return nCopied
 }
 
 // String will return a string representation of the store's buffer

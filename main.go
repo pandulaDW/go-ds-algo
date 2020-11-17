@@ -1,9 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"algos.com/main/customio"
+)
 
 func main() {
-	store := CreateStore(16)
+	store := customio.CreateStore(10)
 
 	s := "Hello, World!!"
 	store.Write([]byte(s))

@@ -2,21 +2,22 @@ package main
 
 import (
 	"fmt"
+	"path/filepath"
 
-	"algos.com/main/customio"
+	"algos.com/main/iostuff"
 )
 
 func main() {
-	store := customio.CreateStore(10)
+	path, _ := filepath.Abs(filepath.Join("data", "data_write.txt"))
+	data := []string{
+		"A bad workman always blames his tools.",
+		"A bird in hand is worth two in the bush.",
+		"Absence makes the heart grow fonder.",
+	}
 
-	s := "Hello, World!!"
-	store.Write([]byte(s))
+	iostuff.WriteFileStream(data, path)
 
-	b1 := make([]byte, 5)
-	store.Read(b1)
-	fmt.Println(string(b1))
-
-	b2 := make([]byte, 10)
-	store.Flush(b2)
-	fmt.Println(string(b2))
+	path, _ = filepath.Abs(filepath.Join("data", "data_read.txt"))
+	content := iostuff.ReadFileStream(path)
+	fmt.Println(content)
 }

@@ -1,4 +1,4 @@
-package customio
+package iostuff
 
 import "errors"
 

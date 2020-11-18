@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"strings"
 )
 
 // Type os.File represents a file on the local system. It implements
@@ -31,7 +32,6 @@ func WriteFileStream(data []string, path string) {
 			os.Exit(1)
 		}
 	}
-	fmt.Println("file write done")
 }
 
 // ReadFileStream reads data from a given file and return the content as a string
@@ -56,4 +56,21 @@ func ReadFileStream(path string) string {
 	}
 
 	return string(content)
+}
+
+// WriteStdOut writes data to standard output
+func WriteStdOut(content string) {
+	data := strings.Split(content, "\n")
+
+	for _, val := range data {
+		n, err := os.Stdout.Write([]byte(val))
+		if err != nil {
+			fmt.Println(err)
+			os.Exit(1)
+		}
+		if n != len(val) {
+			fmt.Println("Failed to write data")
+			os.Exit(1)
+		}
+	}
 }

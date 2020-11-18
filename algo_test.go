@@ -40,3 +40,10 @@ func TestFindDuplicateElements(t *testing.T) {
 	a := []int{3, 6, 8, 8, 10, 12, 15, 15, 15, 20}
 	assert.ElementsMatch(t, []int{8, 15}, findDuplicateElements(a))
 }
+
+func BenchmarkFindDuplicateElements(t *testing.B) {
+	a := []int{3, 6, 8, 8, 10, 12, 15, 15, 15, 20}
+	for i := 0; i < t.N; i++ {
+		findDuplicateElements(a)
+	}
+}

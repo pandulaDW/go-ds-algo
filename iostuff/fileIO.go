@@ -1,6 +1,8 @@
 package iostuff
 
 import (
+	"bufio"
+	"bytes"
 	"fmt"
 	"io"
 	"os"
@@ -9,6 +11,9 @@ import (
 
 // Type os.File represents a file on the local system. It implements
 // both io.Reader and io.Writer and, therefore, can be used in any streaming IO contexts
+
+// io.Copy() makes it easy to stream data from a source reader to a target writer.
+// It abstracts out the for-loop pattern (we’ve seen so far) and properly handle io.EOF and byte counts
 
 // WriteFileStream writes data to a given file. If the file doesn't exists, it will create a file first
 func WriteFileStream(data []string, path string) {
@@ -72,5 +77,71 @@ func WriteStdOut(content string) {
 			fmt.Println("Failed to write data")
 			os.Exit(1)
 		}
+	}
+}
+
+// CopyStream reads data from a file and write to the another file
+func CopyStream(inputPath string, outputPath string) {
+	inputFile, err := os.OpenFile(inputPath, os.O_RDONLY, 0444)
+	outputFile, err := os.Create(outputPath)
+
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+
+	n, err := io.Copy(outputFile, inputFile)
+
+	if err == nil {
+		fmt.Printf("\nSuccessfully copied %d bytes\n", n)
+	} else {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+
+	defer inputFile.Close()
+	defer outputFile.Close()
+}
+
+// PipeReaderWriter creates a synchronous in-memory pipe.
+// It can be used to connect code expecting an io.Reader with code expecting an io.Writer.
+func PipeReaderWriter(content string) {
+	byteBuffer := new(bytes.Buffer)
+	byteBuffer.WriteString(content)
+
+	piper, pipew := io.Pipe()
+
+	// write in writer end of pipe
+	go func() {
+		defer pipew.Close()
+		io.Copy(pipew, byteBuffer)
+	}()
+
+	// read from reader end of the pipe
+	io.Copy(os.Stdout, piper)
+}
+
+// BufferedIORead will read the content using a buffer
+func BufferedIORead(path string) {
+	file, err := os.Open(path)
+	if err != nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	defer file.Close()
+
+	reader := bufio.NewReader(file)
+
+	for {
+		line, err := reader.ReadString('\n')
+		if err != nil {
+			if err == io.EOF {
+				break
+			} else {
+				fmt.Println(err)
+				os.Exit(1)
+			}
+		}
+		fmt.Println(line)
 	}
 }

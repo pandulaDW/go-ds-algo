@@ -1,13 +1,17 @@
 package main
 
 import (
-	"path/filepath"
+	"fmt"
 
-	"algos.com/main/iostuff"
+	"algos.com/main/queues"
 )
 
 func main() {
-	inputPath, _ := filepath.Abs(filepath.Join("data", "data_read.txt"))
+	q := queues.CreateQueueUsingArray()
+	q.Enqueue(12)
+	q.Enqueue(15)
+	q.Enqueue(19)
+	q.Enqueue(22)
 
-	iostuff.BufferedIORead(inputPath)
+	fmt.Println(q.String())
 }

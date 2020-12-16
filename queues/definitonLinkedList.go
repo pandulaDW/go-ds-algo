@@ -1,6 +1,7 @@
 package queues
 
 import (
+	"errors"
 	"fmt"
 	"strings"
 )
@@ -17,12 +18,12 @@ type Node struct {
 
 // HeadNode defines the head of the list
 type HeadNode struct {
-	next *Node
+	first *Node
 }
 
 // TailNode defines the head of the list
 type TailNode struct {
-	previous *Node
+	last *Node
 }
 
 // LinkedList struct
@@ -37,34 +38,57 @@ func CreateLinkedList() *LinkedList {
 	return &LinkedList{&HeadNode{}, &TailNode{}, 0}
 }
 
+// Size is a getter for list count property
+func (list *LinkedList) Size() int {
+	return list.count
+}
+
 // Push method will push an element to the list at the end in constant time
 func (list *LinkedList) Push(item int) {
 
 	// define a new node
 	newNode := &Node{data: item, next: nil}
 
-	if list.head.next == nil {
+	if list.head.first == nil {
 		// push to head if it's the first element
-		list.head.next = newNode
+		list.head.first = newNode
 	} else {
 		// set the current last element's next as the newNode
-		list.tail.previous.next = newNode
+		list.tail.last.next = newNode
 	}
 
 	// update the tail
-	list.tail.previous = newNode
+	list.tail.last = newNode
 	list.count++
+}
+
+// Pull method will pull the first element from the list in constant time.
+// Panics if the list is empty
+func (list *LinkedList) Pull() {
+	if list.head.first == nil {
+		panic(errors.New("Cannot pull an element from an empty list"))
+	}
+
+	// set the head correctly
+	currentHead := list.head.first
+	list.head.first = currentHead.next
+
+	// set the current head's pointer to null for it to be gced
+	currentHead.next = nil
+
+	// set the list count
+	list.count--
 }
 
 // String implements the stringer interface
 func (list *LinkedList) String() string {
 	sb := make([]string, 0, list.count)
+	currentNode := list.head.first
 
-	if list.head.next == nil {
+	if currentNode == nil {
 		return "{}"
 	}
 
-	currentNode := list.head.next
 	for {
 		sb = append(sb, fmt.Sprintf("%d", currentNode.data))
 		currentNode = currentNode.next

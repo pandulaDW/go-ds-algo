@@ -1,7 +1,6 @@
 package queues
 
 import (
-	"errors"
 	"fmt"
 	"strings"
 )
@@ -43,6 +42,16 @@ func (list *LinkedList) Size() int {
 	return list.count
 }
 
+// First returns the first element of the list
+func (list *LinkedList) First() int {
+	return list.head.first.data
+}
+
+// Last returns the last element of the list
+func (list *LinkedList) Last() int {
+	return list.tail.last.data
+}
+
 // Push method will push an element to the list at the end in constant time
 func (list *LinkedList) Push(item int) {
 
@@ -63,10 +72,9 @@ func (list *LinkedList) Push(item int) {
 }
 
 // Pull method will pull the first element from the list in constant time.
-// Panics if the list is empty
 func (list *LinkedList) Pull() {
 	if list.head.first == nil {
-		panic(errors.New("Cannot pull an element from an empty list"))
+		return
 	}
 
 	// set the head correctly

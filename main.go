@@ -8,7 +8,7 @@ import (
 
 func main() {
 	var q queues.Queue
-	q = queues.CreateQueueUsingArray(10)
+	q = queues.CreateQueueUsingList(10)
 	q.Enqueue(12)
 	q.Enqueue(15)
 	q.Enqueue(19)
@@ -22,5 +22,4 @@ func main() {
 	fmt.Println("Last element: ", q.Last())
 
 	fmt.Println(q.String())
-
 }

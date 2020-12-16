@@ -7,7 +7,8 @@ import (
 )
 
 func main() {
-	q := queues.CreateQueueUsingArray(10)
+	var q queues.Queue
+	q = queues.CreateQueueUsingArray(10)
 	q.Enqueue(12)
 	q.Enqueue(15)
 	q.Enqueue(19)

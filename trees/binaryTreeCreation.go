@@ -1,14 +1,24 @@
 package trees
 
-import "algos.com/main/queues"
+import (
+	"encoding/json"
+	"io/ioutil"
+)
 
-// CreateTestTree will create a sample tree for a given set of data
-// slice and it will return the root node
-func CreateTestTree(data []int) *Node {
-	q := queues.CreateQueueUsingList(len(data))
-	root := Node{nil, nil, data[0]}
-	q.Enqueue(&root)
+// CreateTreeFromJSON will create a binary tree from a JSON document
+// and it will construct a tree and return the root node
+func CreateTreeFromJSON(filepath string) (*Node, error) {
+	data, err := ioutil.ReadFile(filepath)
+	if err != nil {
+		return nil, err
+	}
 
-	currentNode := q.Dequeue()
-	return &root
+	root := new(Node)
+
+	err = json.Unmarshal(data, root)
+	if err != nil {
+		return nil, err
+	}
+
+	return root, nil
 }

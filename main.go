@@ -3,23 +3,14 @@ package main
 import (
 	"fmt"
 
-	"algos.com/main/queues"
+	"algos.com/main/trees"
 )
 
 func main() {
-	q := queues.CreateQueueUsingList(10)
-	q.Enqueue(12)
-	q.Enqueue(15)
-	q.Enqueue(19)
-	q.Enqueue(22)
-	q.Enqueue(49)
-	q.Enqueue("test")
+	tree, err := trees.CreateTreeFromJSON("data/tree1.json")
+	if err != nil {
+		panic(err)
+	}
 
-	q.Dequeue()
-	q.Dequeue()
-
-	fmt.Println("First element: ", q.First())
-	fmt.Println("Last element: ", q.Last())
-
-	fmt.Println(q.String())
+	fmt.Println(tree.Left.Data)
 }

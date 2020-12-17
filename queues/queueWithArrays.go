@@ -57,11 +57,13 @@ func (queue *QueueUsingArray) Enqueue(item interface{}) {
 
 // Dequeue will remove an element to the queue. Changing the underlying slice is
 // sufficient here. Will be an O(1) operation. Panics if queue is empty
-func (queue *QueueUsingArray) Dequeue() {
+func (queue *QueueUsingArray) Dequeue() interface{} {
 	if queue.IsEmpty() {
 		panic(errors.New("Cannot dequeue an empty queue"))
 	}
+	first := queue.data[0]
 	queue.data = queue.data[1:]
+	return first
 }
 
 // String implements the stringer interface for the queue

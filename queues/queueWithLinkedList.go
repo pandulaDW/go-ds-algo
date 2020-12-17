@@ -55,11 +55,13 @@ func (queue *QueueUsingList) Enqueue(item interface{}) {
 
 // Dequeue will remove an element to the queue. Pull method of the linked list
 // is used here. Panics if queue is empty
-func (queue *QueueUsingList) Dequeue() {
+func (queue *QueueUsingList) Dequeue() interface{} {
 	if queue.IsEmpty() {
 		panic(errors.New("Cannot dequeue an empty queue"))
 	}
+	first := queue.First()
 	queue.data.Pull()
+	return first
 }
 
 // String implements the stringer interface for the queue

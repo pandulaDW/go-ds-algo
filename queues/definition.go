@@ -9,6 +9,6 @@ type Queue interface {
 	First() interface{}
 	Last() interface{}
 	Enqueue(item interface{})
-	Dequeue()
+	Dequeue() interface{}
 	String() string
 }

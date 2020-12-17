@@ -3,7 +3,7 @@ package trees
 import (
 	"fmt"
 
-	"algos.com/main/queues"
+	"algos.com/main/stacks"
 )
 
 // PreOrderRecursive will traverse a binary tree in a pre-order fashion recursively
@@ -23,10 +23,15 @@ func (root *Node) PreOrderRecursive() {
 
 // PreOrderIterative will traverse a binary tree in a pre-order fashion iteratively
 func (root *Node) PreOrderIterative() {
-	q := queues.CreateQueueUsingList()
+	s := stacks.CreateStackUsingList()
+
+	moveForward := func(node *Node) {
+		fmt.Printf("%d", node.Data)
+	}
 
 	for {
-		if q.IsEmpty() {
+		moveForward(root)
+		if s.IsEmpty() {
 			break
 		}
 	}

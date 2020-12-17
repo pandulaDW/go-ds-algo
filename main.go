@@ -12,6 +12,7 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Println()
 	root.PreOrderRecursive()
+	fmt.Println()
+
 }

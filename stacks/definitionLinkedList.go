@@ -11,15 +11,13 @@ import (
 // a singly linked list as the underlying data type
 type StackUsingList struct {
 	list linkedlist.LinkedList
-	size int
 }
 
 // CreateStackUsingList will create and return a new stack using a linked list
-func CreateStackUsingList(size int) StackUsingList {
+func CreateStackUsingList() StackUsingList {
 	list := linkedlist.CreateLinkedList()
 	stack := StackUsingList{
 		list: list,
-		size: size,
 	}
 	return stack
 }
@@ -51,7 +49,7 @@ func (stack *StackUsingList) IsEmpty() bool {
 
 // IsFull will return true if the stack is full and false otherwise
 func (stack *StackUsingList) IsFull() bool {
-	return stack.list.Count() == stack.size
+	return false
 }
 
 // StackTop will return true the top most element, panics if the stack is empty

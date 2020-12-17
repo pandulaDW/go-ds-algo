@@ -71,6 +71,25 @@ func (list *LinkedList) Push(item interface{}) {
 	list.count++
 }
 
+// InsertFirst method will push an element to the list at the beginning in constant time
+func (list *LinkedList) InsertFirst(item interface{}) {
+
+	// define a new node
+	newNode := &Node{data: item, next: nil}
+
+	if list.head.first == nil {
+		// push to tail if it's the first element
+		list.tail.last = newNode
+	} else {
+		// set the current last element's next as the newNode
+		newNode.next = list.head.first
+	}
+
+	// update the head
+	list.head.first = newNode
+	list.count++
+}
+
 // Pull method will pull the first element from the list in constant time.
 func (list *LinkedList) Pull() {
 	if list.head.first == nil {

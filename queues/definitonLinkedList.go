@@ -11,7 +11,7 @@ import (
 
 // Node defines a generic data node in the list
 type Node struct {
-	data int
+	data interface{}
 	next *Node
 }
 
@@ -43,17 +43,17 @@ func (list *LinkedList) Size() int {
 }
 
 // First returns the first element of the list
-func (list *LinkedList) First() int {
+func (list *LinkedList) First() interface{} {
 	return list.head.first.data
 }
 
 // Last returns the last element of the list
-func (list *LinkedList) Last() int {
+func (list *LinkedList) Last() interface{} {
 	return list.tail.last.data
 }
 
 // Push method will push an element to the list at the end in constant time
-func (list *LinkedList) Push(item int) {
+func (list *LinkedList) Push(item interface{}) {
 
 	// define a new node
 	newNode := &Node{data: item, next: nil}

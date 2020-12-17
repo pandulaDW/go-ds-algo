@@ -6,9 +6,9 @@ type Queue interface {
 	Size() int
 	IsEmpty() bool
 	IsFull() bool
-	First() int
-	Last() int
-	Enqueue(item int)
+	First() interface{}
+	Last() interface{}
+	Enqueue(item interface{})
 	Dequeue()
 	String() string
 }

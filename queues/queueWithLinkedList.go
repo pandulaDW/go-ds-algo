@@ -35,12 +35,12 @@ func (queue *QueueUsingList) IsFull() bool {
 }
 
 // First returns the first item of the queue
-func (queue *QueueUsingList) First() int {
+func (queue *QueueUsingList) First() interface{} {
 	return queue.data.First()
 }
 
 // Last returns the last item of the queue
-func (queue *QueueUsingList) Last() int {
+func (queue *QueueUsingList) Last() interface{} {
 	return queue.data.Last()
 }
 

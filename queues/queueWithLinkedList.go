@@ -7,15 +7,13 @@ import (
 
 // QueueUsingList is the type of definition of a queue implemented using a linked list
 type QueueUsingList struct {
-	data     *LinkedList
-	capacity int
+	data *LinkedList
 }
 
 // CreateQueueUsingList creates a new queue using a linked list
-func CreateQueueUsingList(capacity int) *QueueUsingList {
+func CreateQueueUsingList() *QueueUsingList {
 	queue := &QueueUsingList{}
 	queue.data = CreateLinkedList()
-	queue.capacity = capacity
 	return queue
 }
 
@@ -31,7 +29,7 @@ func (queue *QueueUsingList) IsEmpty() bool {
 
 // IsFull returns whether the queue is at capacity
 func (queue *QueueUsingList) IsFull() bool {
-	return queue.Size() == queue.capacity
+	return false
 }
 
 // First returns the first item of the queue

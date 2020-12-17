@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	"algos.com/main/trees"
 )
 
@@ -10,5 +12,6 @@ func main() {
 		panic(err)
 	}
 
-	root.PreOrderTraversal()
+	fmt.Println()
+	root.PreOrderRecursive()
 }

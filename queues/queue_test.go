@@ -21,7 +21,7 @@ func BenchmarkPerformanceQueueArray(t *testing.B) {
 }
 
 func BenchmarkPerformanceQueueList(t *testing.B) {
-	q := CreateQueueUsingList(100)
+	q := CreateQueueUsingList()
 	for i := 0; i < t.N; i++ {
 		checkPerformance(q, 100)
 	}

@@ -20,4 +20,6 @@ func main() {
 
 	fmt.Println("First element: ", q.First())
 	fmt.Println("Last element: ", q.Last())
+
+	fmt.Println(q.String())
 }

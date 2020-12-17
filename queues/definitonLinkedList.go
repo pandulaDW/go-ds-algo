@@ -98,7 +98,7 @@ func (list *LinkedList) String() string {
 	}
 
 	for {
-		sb = append(sb, fmt.Sprintf("%d", currentNode.data))
+		sb = append(sb, fmt.Sprintf("%v", currentNode.data))
 		currentNode = currentNode.next
 		if currentNode == nil {
 			break

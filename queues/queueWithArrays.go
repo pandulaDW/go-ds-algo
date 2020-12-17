@@ -2,6 +2,7 @@ package queues
 
 import (
 	"errors"
+	"fmt"
 	"strings"
 )
 
@@ -67,7 +68,7 @@ func (queue *QueueUsingArray) Dequeue() {
 func (queue *QueueUsingArray) String() string {
 	sb := make([]string, queue.Size())
 	for i, val := range queue.data {
-		sb[i] = val.(string)
+		sb[i] = fmt.Sprintf("%v", val)
 	}
 	return strings.Join(sb, " <- ")
 }

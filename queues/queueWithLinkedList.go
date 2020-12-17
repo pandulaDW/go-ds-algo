@@ -46,7 +46,7 @@ func (queue *QueueUsingList) Last() interface{} {
 
 // Enqueue will insert a new element to the queue. Push method of the linked list
 // is used here. Panics if exceeding the queue capacity
-func (queue *QueueUsingList) Enqueue(item int) {
+func (queue *QueueUsingList) Enqueue(item interface{}) {
 	if queue.IsFull() {
 		panic(errors.New("Cannot enqueue to a full queue"))
 	}

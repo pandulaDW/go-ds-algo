@@ -2,8 +2,6 @@ package trees
 
 import (
 	"fmt"
-
-	"algos.com/main/stacks"
 )
 
 // PreOrderRecursive will traverse a binary tree in a pre-order fashion recursively
@@ -23,16 +21,27 @@ func (root *Node) PreOrderRecursive() {
 
 // PreOrderIterative will traverse a binary tree in a pre-order fashion iteratively
 func (root *Node) PreOrderIterative() {
-	s := stacks.CreateStackUsingList()
-
-	moveForward := func(node *Node) {
-		fmt.Printf("%d", node.Data)
-	}
+	s := CreateSimpleStack()
+	currentNode := root
 
 	for {
-		moveForward(root)
-		if s.IsEmpty() {
-			break
+		if currentNode != nil {
+			fmt.Printf("%d, ", currentNode.Data)
+			s.Push(currentNode)
+			currentNode = currentNode.Left
+			continue
+		}
+
+		currentNode = s.Pop().(*Node)
+
+		if currentNode.Right == nil {
+			if !s.IsEmpty() {
+				currentNode = s.Pop().(*Node)
+			} else {
+				break
+			}
+			currentNode = currentNode.Right
+			continue
 		}
 	}
 }

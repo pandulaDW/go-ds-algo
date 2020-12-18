@@ -15,4 +15,5 @@ func main() {
 	root.PreOrderRecursive()
 	fmt.Println()
 
+	root.PreOrderIterative()
 }

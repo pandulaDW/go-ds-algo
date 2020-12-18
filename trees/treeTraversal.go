@@ -40,9 +40,8 @@ func (root *Node) PreOrderIterative() {
 	}
 }
 
-// InOrderTraversal will traverse a binary tree in a pre-order fashion
-// and print the data
-func (root *Node) InOrderTraversal() {
+// InOrderRecursive will traverse a binary tree in an in-order fashion recursively
+func (root *Node) InOrderRecursive() {
 	var traverse func(t *Node)
 
 	traverse = func(t *Node) {
@@ -54,4 +53,25 @@ func (root *Node) InOrderTraversal() {
 	}
 
 	traverse(root)
+}
+
+// InOrderIterative will traverse a binary tree in an in-order fashion iteratively
+func (root *Node) InOrderIterative() {
+	s := CreateSimpleStack()
+	currentNode := root
+
+	for {
+		if currentNode == nil && s.IsEmpty() {
+			break
+		}
+
+		if currentNode != nil {
+			s.Push(currentNode)
+			currentNode = currentNode.Left
+		} else {
+			currentNode = s.Pop().(*Node)
+			fmt.Printf("%d, ", currentNode.Data)
+			currentNode = currentNode.Right
+		}
+	}
 }

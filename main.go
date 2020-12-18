@@ -16,4 +16,10 @@ func main() {
 	fmt.Println()
 
 	root.PreOrderIterative()
+	fmt.Println()
+
+	root.InOrderRecursive()
+	fmt.Println()
+
+	root.InOrderIterative()
 }

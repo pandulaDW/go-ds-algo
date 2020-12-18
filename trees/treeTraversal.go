@@ -25,23 +25,17 @@ func (root *Node) PreOrderIterative() {
 	currentNode := root
 
 	for {
+		if currentNode == nil && s.IsEmpty() {
+			break
+		}
+
 		if currentNode != nil {
 			fmt.Printf("%d, ", currentNode.Data)
 			s.Push(currentNode)
 			currentNode = currentNode.Left
-			continue
-		}
-
-		currentNode = s.Pop().(*Node)
-
-		if currentNode.Right == nil {
-			if !s.IsEmpty() {
-				currentNode = s.Pop().(*Node)
-			} else {
-				break
-			}
+		} else {
+			currentNode = s.Pop().(*Node)
 			currentNode = currentNode.Right
-			continue
 		}
 	}
 }

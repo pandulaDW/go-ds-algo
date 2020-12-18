@@ -2,6 +2,8 @@ package trees
 
 import (
 	"fmt"
+
+	"algos.com/main/queues"
 )
 
 // PreOrderRecursive will traverse a binary tree in a pre-order fashion recursively
@@ -72,6 +74,28 @@ func (root *Node) InOrderIterative() {
 			currentNode = s.Pop().(*Node)
 			fmt.Printf("%d, ", currentNode.Data)
 			currentNode = currentNode.Right
+		}
+	}
+}
+
+// LevelOrderIterative will traverse a binary tree in a level-order fashion iteratively
+func (root *Node) LevelOrderIterative() {
+	q := queues.CreateQueueUsingList()
+	fmt.Printf("%d, ", root.Data)
+	q.Enqueue(root)
+	currentNode := root
+
+	for !q.IsEmpty() {
+		currentNode = q.Dequeue().(*Node)
+
+		if currentNode.Left != nil {
+			fmt.Printf("%d, ", currentNode.Left.Data)
+			q.Enqueue(currentNode.Left)
+		}
+
+		if currentNode.Right != nil {
+			fmt.Printf("%d, ", currentNode.Right.Data)
+			q.Enqueue(currentNode.Right)
 		}
 	}
 }

@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	root, err := trees.CreateTreeFromJSON("data/tree1.json")
+	root, err := trees.CreateTreeFromJSON("data/tree2.json")
 	if err != nil {
 		panic(err)
 	}
@@ -22,4 +22,7 @@ func main() {
 	fmt.Println()
 
 	root.InOrderIterative()
+	fmt.Println()
+
+	root.LevelOrderIterative()
 }

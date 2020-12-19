@@ -1,28 +1,11 @@
 package main
 
 import (
-	"fmt"
-
 	"algos.com/main/trees"
 )
 
 func main() {
-	root, err := trees.CreateTreeFromJSON("data/tree2.json")
-	if err != nil {
-		panic(err)
-	}
-
-	root.PreOrderRecursive()
-	fmt.Println()
-
-	root.PreOrderIterative()
-	fmt.Println()
-
-	root.InOrderRecursive()
-	fmt.Println()
-
-	root.InOrderIterative()
-	fmt.Println()
-
-	root.LevelOrderIterative()
+	preOrder := []int{2, 1, 3, 5}
+	InOrder := []int{1, 2, 5, 3, 6}
+	trees.GenerateTreeFromTraversal(preOrder, InOrder)
 }

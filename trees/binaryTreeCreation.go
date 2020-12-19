@@ -22,3 +22,10 @@ func CreateTreeFromJSON(filepath string) (*Node, error) {
 
 	return root, nil
 }
+
+// GenerateTreeFromTraversal will take in a pre-order traversal list of nodes and an
+// in-order traversal list of nodes and then will generate a unique tree based on that.
+func GenerateTreeFromTraversal() *Node {
+	root := new(Node)
+	return root
+}

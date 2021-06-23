@@ -1,2 +1,6 @@
 .vscode
 data
+/.idea/go-ds-algo.iml
+/.idea/modules.xml
+/.idea/remote-targets.xml
+/.idea/vcs.xml

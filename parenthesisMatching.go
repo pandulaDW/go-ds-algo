@@ -5,7 +5,7 @@ import "algos.com/main/stacks"
 // IsParenthesisMatching checks if parenthesis are matching in a
 // given expression.
 //
-// This function matche (), [] and {} types of parenthesis expressions
+// This function matches (), [] and {} types of parenthesis expressions
 func IsParenthesisMatching(expr string) bool {
 	oMap := map[rune]rune{
 		'(': ')',

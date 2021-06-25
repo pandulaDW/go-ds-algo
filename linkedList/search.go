@@ -7,7 +7,7 @@ type FindPredicate func(val interface{}) bool
 // predicate function to each element's data.
 //
 // Returns -1, if no element has been found
-func (list *linkedList) FindIndex(predicate FindPredicate) int {
+func (list *LinkedList) FindIndex(predicate FindPredicate) int {
 	currentNode := list.head.pointer
 	if currentNode == nil {
 		return -1

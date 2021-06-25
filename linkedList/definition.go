@@ -11,27 +11,27 @@ type node struct {
 	pointer *node
 }
 
-// linkedList defines the structure of the linked list
-type linkedList struct {
+// LinkedList defines the structure of the linked list
+type LinkedList struct {
 	head *node // points to the first element
 	tail *node // points to the last element
 	size int   // number of elements in the list
 }
 
 // NewLinkedList creates a new singly linked list
-func NewLinkedList() *linkedList {
+func NewLinkedList() *LinkedList {
 	head := &node{data: nil, pointer: nil}
 	tail := &node{data: nil, pointer: nil}
-	return &linkedList{head: head, tail: tail, size: 0}
+	return &LinkedList{head: head, tail: tail, size: 0}
 }
 
 // Size returns the total number of elements in the list
-func (list *linkedList) Size() int {
+func (list *LinkedList) Size() int {
 	return list.size
 }
 
 // String implements the stringer interface
-func (list *linkedList) String() string {
+func (list *LinkedList) String() string {
 	strArr := make([]string, 0, list.size)
 	currentNode := list.head.pointer
 
@@ -43,5 +43,5 @@ func (list *linkedList) String() string {
 		}
 	}
 
-	return fmt.Sprintf("%v\nLinkedList with %d elements", strings.Join(strArr, " -> "), list.size)
+	return strings.Join(strArr, " -> ")
 }

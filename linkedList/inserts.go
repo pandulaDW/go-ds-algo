@@ -1,7 +1,7 @@
 package linkedList
 
 // InsertAtEnd appends the given data to the end of the linked list
-func (list *linkedList) InsertAtEnd(data interface{}) {
+func (list *LinkedList) InsertAtEnd(data interface{}) {
 	newNode := &node{data: data, pointer: list.tail}
 	list.size++
 
@@ -18,7 +18,7 @@ func (list *linkedList) InsertAtEnd(data interface{}) {
 }
 
 // InsertAtStart prepends the given data to the start of the linked list
-func (list *linkedList) InsertAtStart(data interface{}) {
+func (list *LinkedList) InsertAtStart(data interface{}) {
 	newNode := &node{data: data}
 	list.size++
 
@@ -38,7 +38,7 @@ func (list *linkedList) InsertAtStart(data interface{}) {
 // element to the right.
 //
 // If the index is higher than the size of the list, it will appended to the end.
-func (list *linkedList) InsertAtPosition(index uint, data interface{}) {
+func (list *LinkedList) InsertAtPosition(index uint, data interface{}) {
 	i := int(index)
 	newNode := &node{data: data}
 	list.size++

@@ -10,5 +10,5 @@ func main() {
 		{3, "mat"}, {5, "food"}, {90, "rand"}, {42, "ryan"}}
 
 	hashTable := hashing.NewHashTable(arr)
-	fmt.Println(hashTable)
+	fmt.Println(hashTable.SearchHashTable(65))
 }

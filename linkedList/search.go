@@ -27,3 +27,28 @@ func (list *LinkedList) FindIndex(predicate FindPredicate) int {
 
 	return -1
 }
+
+// Find returns the first element found, by applying the given
+// predicate function to each element's data.
+//
+// Returns nil, if no element has been found
+func (list *LinkedList) Find(predicate FindPredicate) interface{} {
+	currentNode := list.head.pointer
+	if currentNode == nil {
+		return nil
+	}
+
+	index := 0
+	for {
+		if currentNode == list.tail {
+			break
+		}
+		if predicate(currentNode.data) {
+			return currentNode.data
+		}
+		currentNode = currentNode.pointer
+		index++
+	}
+
+	return -1
+}

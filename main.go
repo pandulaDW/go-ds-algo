@@ -14,11 +14,10 @@ func main() {
 	fmt.Println(hashTable.SearchHashTable(4))
 
 	list := linkedList.NewLinkedList()
+	list.InsertAtStart(100)
 	list.InsertAtEnd(12)
 	list.InsertAtEnd(15)
-	list.InsertAtEnd(23)
-	list.InsertAtEnd("foo")
-	list.InsertAtEnd(22)
+	list.InsertAtEnd(32)
 
 	fmt.Println(list)
 }

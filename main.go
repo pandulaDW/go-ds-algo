@@ -14,10 +14,13 @@ func main() {
 	fmt.Println(hashTable.SearchHashTable(4))
 
 	list := linkedList.NewLinkedList()
-	list.InsertAtStart(100)
-	list.InsertAtEnd(12)
-	list.InsertAtEnd(15)
-	list.InsertAtEnd(32)
+	list.InsertAtEnd(25)
+	list.InsertAtEnd(50)
+	list.InsertAtEnd(75)
+
+	fmt.Println(list.FindIndex(func(val interface{}) bool {
+		return val.(int) > 165
+	}))
 
 	fmt.Println(list)
 }

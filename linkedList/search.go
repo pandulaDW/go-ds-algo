@@ -50,5 +50,5 @@ func (list *LinkedList) Find(predicate FindPredicate) interface{} {
 		index++
 	}
 
-	return -1
+	return nil
 }

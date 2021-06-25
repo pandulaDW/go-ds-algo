@@ -32,6 +32,10 @@ func (list *LinkedList) Size() int {
 
 // String implements the stringer interface
 func (list *LinkedList) String() string {
+	if list.size == 0 {
+		return "[]"
+	}
+
 	strArr := make([]string, 0, list.size)
 	currentNode := list.head.pointer
 
@@ -43,5 +47,5 @@ func (list *LinkedList) String() string {
 		}
 	}
 
-	return strings.Join(strArr, " -> ")
+	return "[ " + strings.Join(strArr, " -> ") + " ]"
 }

@@ -1,11 +1,23 @@
 package linkedList
 
+// removeOnlyRemainingElement removes the only remaining element from the list
+func (list *LinkedList) removeOnlyRemainingElement() {
+	list.head.pointer.pointer = nil
+	list.head.pointer = nil
+	list.tail.pointer = nil
+}
+
 // RemoveFirst will remove the first node from the linked list
 func (list *LinkedList) RemoveFirst() {
 	if list.size == 0 {
 		return
 	}
 	list.size--
+
+	if list.size == 0 {
+		list.removeOnlyRemainingElement()
+		return
+	}
 
 	currentFirstNode := list.head.pointer
 	newFirstNode := currentFirstNode.pointer
@@ -21,16 +33,13 @@ func (list *LinkedList) RemoveLast() {
 	if list.size == 0 {
 		return
 	}
+	list.size--
 
-	if list.size == 1 {
-		list.head.pointer.pointer = nil
-		list.head.pointer = nil
-		list.tail.pointer = nil
-		list.size--
+	if list.size == 0 {
+		list.removeOnlyRemainingElement()
 		return
 	}
 
-	list.size--
 	currentNode := list.head.pointer
 	for {
 		if currentNode.pointer.pointer == list.tail {
@@ -47,8 +56,29 @@ func (list *LinkedList) RemoveLast() {
 func (list *LinkedList) RemoveUsingIndex(index uint) {
 	i := int(index)
 
-	if i > list.size-1 {
+	if i == 0 {
+		list.RemoveFirst()
 		return
 	}
 
+	if i >= list.size-1 {
+		list.RemoveLast()
+		return
+	}
+
+	currentNode := list.head.pointer
+	currentIndex := 1
+
+	for {
+		if currentIndex == i {
+			removedNode := currentNode.pointer
+			currentNode.pointer = removedNode.pointer
+			removedNode.pointer = nil
+			break
+		}
+		currentNode = currentNode.pointer
+		currentIndex++
+	}
+
+	list.size--
 }

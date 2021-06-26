@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"github.com/pandulaDW/go-ds-algo/hashing"
-	"github.com/pandulaDW/go-ds-algo/linkedList"
 )
 
 func main() {
@@ -13,13 +12,6 @@ func main() {
 	hashTable := hashing.NewHashTable(arr)
 	fmt.Println(hashTable.SearchHashTable(15))
 
-	l := linkedList.NewLinkedList()
-	l.InsertAtEnd(12)
-	l.InsertAtEnd(15)
-	l.InsertAtEnd(17)
-	l.InsertAtEnd(17)
-	l.InsertAtEnd(17)
-	l.InsertAtEnd(17)
-
-	fmt.Println(l)
+	hashTable.DeleteFromTable(82)
+	fmt.Println(hashTable)
 }

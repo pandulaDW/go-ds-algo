@@ -23,18 +23,22 @@ func (hTable *hashTable) InsertToTable(item *Data) {
 }
 
 // DeleteFromTable will delete the given element from the hash table
-func (hTable *hashTable) DeleteFromTable(item *Data) {
-	index := hTable.hashFunc(item.ID)
+func (hTable *hashTable) DeleteFromTable(id int) {
+	index := hTable.hashFunc(id)
 
 	if hTable.hashArr[index] == nil {
 		return
 	}
 
-	currentElemPos := hTable.hashArr[index].FindIndex(func(val interface{}) bool {
-		return val.(*Data).ID == item.ID
+	currentElemIndex := hTable.hashArr[index].FindIndex(func(val interface{}) bool {
+		return val.(*Data).ID == id
 	})
 
-	_ = currentElemPos
+	if currentElemIndex == -1 {
+		return
+	}
+
+	hTable.hashArr[index].RemoveUsingIndex(uint(currentElemIndex))
 }
 
 // SearchHashTable will return the element searched using the given item ID

@@ -3,6 +3,7 @@ package hashing
 import (
 	"fmt"
 	"github.com/pandulaDW/go-ds-algo/linkedList"
+	"math"
 	"strings"
 )
 
@@ -25,6 +26,10 @@ type hashTable struct {
 	hashArr []*linkedList.LinkedList
 }
 
+func mod(n, base int) int {
+	return n - int(math.Floor(float64(n)/float64(base)))*base
+}
+
 func polynomialRollingHash(str string) int {
 	p := 31
 	m := int(1e9 + 9)
@@ -32,7 +37,7 @@ func polynomialRollingHash(str string) int {
 	hashVal := 0
 
 	for _, letter := range str {
-		hashVal = hashVal + (int(letter-'a'+1)*(powerOfP))%m
+		hashVal = mod(hashVal+int(letter-'a'+1)*powerOfP, m)
 		powerOfP = (powerOfP * p) % m
 	}
 

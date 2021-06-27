@@ -18,9 +18,9 @@ func (hTable *hashTable) InsertToTable(item interface{}) {
 
 	currentElemIndex := hTable.hashArr[index].FindIndex(func(val interface{}) bool {
 		if _, ok := item.(*DataWithNumID); ok {
-			return val.(int) == item.(*DataWithNumID).ID
+			return val.(*DataWithNumID).ID == item.(*DataWithNumID).ID
 		}
-		return val.(string) == item.(*DataWithStringID).ID
+		return val.(*DataWithStringID).ID == item.(*DataWithStringID).ID
 	})
 
 	if currentElemIndex == -1 {

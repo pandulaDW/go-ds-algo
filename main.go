@@ -2,20 +2,20 @@ package main
 
 import (
 	"fmt"
+	"github.com/pandulaDW/go-ds-algo/data"
 	"github.com/pandulaDW/go-ds-algo/hashing"
-	"unicode/utf8"
 )
 
 func main() {
-	arr := []*hashing.DataWithNumID{{15, "foo"}, {32, "bar"}, {65, "bitch"},
+	arr1 := []*hashing.DataWithNumID{{15, "foo"}, {32, "bar"}, {65, "bitch"},
 		{3, "mat"}, {5, "food"}, {90, "rand"}, {42, "ryan"}}
 
-	hashTable := hashing.NewHashTableForNumID(arr)
-	fmt.Println(hashTable.SearchHashTable(15))
+	table1 := hashing.NewHashTableForNumID(arr1)
+	fmt.Println(table1.SearchHashTable(65))
 
-	hashTable.DeleteFromTable(82)
-	fmt.Println(hashTable)
+	accounts := data.ReadAccountData()
 
-	decodeRune, _ := utf8.DecodeRune([]byte("A"))
-	fmt.Println(decodeRune)
+	hashItems := data.ConvertToHashTableType(accounts)
+	table2 := hashing.NewHashTableForStringID(hashItems[0:30])
+	fmt.Println(table2.SearchHashTable("5ca4bbc7a2dd94ee58162486"))
 }
